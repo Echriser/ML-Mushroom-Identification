@@ -7,8 +7,12 @@ with pkgs;
 mkShell {
   buildInputs = [
     julia
-    vscode
-    vscode-extensions.julialang.language-julia
-    vscode-extensions.ms-vsliveshare.vsliveshare
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        julialang.language-julia
+        ms-vsliveshare.vsliveshare
+        vscode-extensions.ms-toolsai.jupyter
+      ];
+    })
   ];
 }
