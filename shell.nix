@@ -14,5 +14,10 @@ mkShell {
         vscode-extensions.ms-toolsai.jupyter
       ];
     })
+    gcc
   ];
+
+  shellHook = ''
+    export LD_LIBRARY_PATH=$(dirname $(gcc -print-file-name=libquadmath.so)):$LD_LIBRARY_PATH
+  '';
 }
